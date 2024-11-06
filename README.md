@@ -1,5 +1,5 @@
-# Computação Gráfica
-### O ARQUIVO PRINCIPAL É O TESTE
+# 🎨 Computação Gráfica
+### O ARQUIVO PRINCIPAL É O TESTE!!!
 Este projeto demonstra a criação de gráficos 2D utilizando a biblioteca **OpenGL** com a **FreeGLUT**, permitindo interação através do teclado e do mouse.
 
 ## Dependências
