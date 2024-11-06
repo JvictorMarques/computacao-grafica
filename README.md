@@ -44,7 +44,9 @@ Pressione b ou B para selecionar Azul.
 Ao clicar com o botão direito do mouse, um menu será exibido com as seguintes opções:
 
 **Pontos**: Clique em qualquer lugar da tela para desenhar pontos na posição do clique.
+
 **Linha**: Clique com o botão esquerdo para selecionar dois pontos que formarão uma linha entre eles.
+
 **Retângulo**: Clique com o botão esquerdo para selecionar dois pontos que formarão um retângulo entre eles.
 
 ## Exemplos de Uso
