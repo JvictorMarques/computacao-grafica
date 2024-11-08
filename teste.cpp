@@ -48,23 +48,19 @@ void init()
 
 void desenhar()
 {
-    if (operacao != 4) {
-        switch (operacao) {
-            case 1:
-                glutMotionFunc(pontos);
-                break;
-            case 2:
-                glutMouseFunc(linhas);
-                break;
-            case 3:
-                glutMouseFunc(retangulo);
-                break;
-            default:
-                break;
-        }
-    } 
-    else {
-        glClear(GL_COLOR_BUFFER_BIT);
+    switch (operacao) {
+        case 1:
+            glutMotionFunc(pontos);
+            break;
+        case 2:
+            glutMouseFunc(linhas);
+            break;
+        case 3:
+            glutMouseFunc(retangulo);
+            break;
+        default:
+            glClear(GL_COLOR_BUFFER_BIT);
+            break;
     }
     glFlush();
 }
