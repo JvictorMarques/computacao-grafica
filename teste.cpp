@@ -4,7 +4,7 @@
 #include <GL/glu.h>
 
 GLint WINDOW_WIDTH = 500, WINDOW_HEIGHT = 500; 
-int operacao;
+int operacao,desenho;
 GLint xi, yi, xf, yf;
 
 void init();
@@ -14,7 +14,7 @@ void pontos(GLint x, GLint y);
 void linhas(GLint button, GLint state, GLint x, GLint y);
 void retangulo(GLint button, GLint state, GLint x, GLint y);
 void criar_menu();
-void menu(int item_number);
+void menu(GLint item_number);
 
 int main(int argc, char* argv[])
 {
@@ -39,6 +39,7 @@ int main(int argc, char* argv[])
 
 void init()
 {
+    glClear(GL_COLOR_BUFFER_BIT);
     glClearColor(0, 0, 0, 1);
     glMatrixMode(GL_PROJECTION);
     gluOrtho2D(0, WINDOW_WIDTH, 0, WINDOW_HEIGHT);
@@ -47,21 +48,23 @@ void init()
 
 void desenhar()
 {
-    glClear(GL_COLOR_BUFFER_BIT);
-    switch (operacao)
-    {
-        case 1:
-            glutMotionFunc(pontos);
-            break;
-        case 2:
-            glutMouseFunc(linhas);
-            break;
-        case 3:
-            glutMouseFunc(retangulo);
-            break;
-        default:
-            std::cout << "Operação inválida" << std::endl;
-            break;
+    if (operacao != 4) {
+        switch (operacao) {
+            case 1:
+                glutMotionFunc(pontos);
+                break;
+            case 2:
+                glutMouseFunc(linhas);
+                break;
+            case 3:
+                glutMouseFunc(retangulo);
+                break;
+            default:
+                break;
+        }
+    } 
+    else {
+        glClear(GL_COLOR_BUFFER_BIT);
     }
     glFlush();
 }
@@ -85,15 +88,20 @@ void alterar_cor(GLubyte key, GLint x, GLint y)
 
 void criar_menu()
 {
-    GLint menu_id = glutCreateMenu(menu);  
-    glutAddMenuEntry("Ponto", 1);
-    glutAddMenuEntry("Linha", 2);
-    glutAddMenuEntry("Retangulo", 3);  
     
+    GLint submenu_id = glutCreateMenu(menu);
+    glutAddMenuEntry("Pontos", 1);
+    glutAddMenuEntry("Linhas", 2);
+    glutAddMenuEntry("Retangulo", 3);
+    
+    GLint menu_id = glutCreateMenu(menu);  
+    glutAddSubMenu("Desenhar", submenu_id);
+    glutAddMenuEntry("Limpar", 4);
+
     glutAttachMenu(GLUT_RIGHT_BUTTON);
 }
 
-void menu(int item_number)
+void menu(GLint item_number)
 {
     operacao = item_number;
     desenhar();
